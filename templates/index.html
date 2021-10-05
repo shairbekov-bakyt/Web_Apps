@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{%block content %}
+    <form action="{{url_for('index')}}" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputLender"
+                 class="form-label">Имя кредитора</label>
+          <input type="text"
+                 class="form-control" id="exampleInputLender"
+                 name="lender"
+                 value="{{request.form.get('lender','')}}">
+        </div>
+            <div class="mb-3">
+          <label for="exampleInputAmount"
+                 class="form-label">Сумма</label>
+          <input type="text" class="form-control" id="exampleInputAmount"
+                 name="amount"
+                 value="{{request.form.get('amount','')}}">
+        </div>
+         <div class="mb-3">
+          <label for="exampleInputBorrower"
+                 class="form-label">Имя заемщика</label>
+          <input type="text" class="form-control" id="exampleInputBorrower"
+                 name="borrower"
+                 value="{{request.form.get('borrewer','')}}">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}
+
+
+{% block checker %}
+
+{%for res in check_res%}
+
+<div class="result">
+    block {{ res['block'] }} : {{res['result']}}
+</div>
+
+{%endfor%}
+
+{%endblock%}
